@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hari Priya | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6C63FF;
+            --secondary: #4A44C6;
+            --accent: #FF6584;
+            --dark: #2A2D43;
+            --light: #F8F9FF;
+            --gray: #8C8EA4;
+            --success: #36D399;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--light);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .app-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(42, 45, 67, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+        /* Header Styles */
+        .app-header {
+            background: var(--dark);
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .nav-tabs {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-tab {
+            background: none;
+            border: none;
+            color: var(--gray);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-tab.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .nav-tab:hover:not(.active) {
+            color: var(--light);
+        }
+
+        /* App Content */
+        .app-content {
+            padding: 2rem;
+            min-height: 600px;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Hero Section */
+        .hero-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            padding: 2rem 0;
+        }
+
+        .hero-content h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero-content .title {
+            font-size: 1.3rem;
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-content p {
+            margin-bottom: 2rem;
+            color: #CCCCCC;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.8rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateX(10px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .contact-item i {
+            color: var(--primary);
+            font-size: 1.2rem;
+            width: 24px;
+        }
+
+        .profile-image {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            justify-self: center;
+        }
+
+        /* Cards */
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.3rem;
+        }
+
+        /* Education Timeline */
+        .timeline-item {
+            display: flex;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .timeline-date {
+            min-width: 100px;
+            color: var(--accent);
+            font-weight: 600;
+            padding-right: 1rem;
+        }
+
+        .timeline-content {
+            flex: 1;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 10px;
+            height: 10px;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+
+        .timeline-content::after {
+            content: '';
+            position: absolute;
+            left: 4px;
+            top: 10px;
+            width: 2px;
+            height: calc(100% + 10px);
+            background: var(--primary);
+        }
+
+        .timeline-item:last-child .timeline-content::after {
+            display: none;
+        }
+
+        .education-title {
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .education-details {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 3px solid var(--primary);
+        }
+
+        .project-info {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--light);
+        }
+
+        .project-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        .project-tag {
+            background: var(--primary);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .skill-category h4 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-item {
+            display: flex;
+            align-items: center;
+            padding: 0.5rem;
+            margin-bottom: 0.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            transition: background 0.3s ease;
+        }
+
+        .skill-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .skill-item i {
+            color: var(--primary);
+            margin-right: 1rem;
+            font-size: 1.2rem;
+        }
+
+        /* Services */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .service-card {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .service-card h4 {
+            margin-bottom: 1rem;
+            color: var(--light);
+        }
+
+        /* Certifications */
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .cert-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .cert-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--light);
+        }
+
+        .cert-provider {
+            color: var(--accent);
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        .app-footer {
+            background: var(--dark);
+            padding: 2rem;
+            text-align: center;
+            border-top: 2px solid var(--primary);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            color: var(--gray);
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-section {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .nav-tabs {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .contact-item {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .app-content {
+                padding: 1rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+
+            .projects-grid,
+            .skills-grid,
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* App-like interactions */
+        .app-container {
+            position: relative;
+        }
+
+        .app-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
+
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(108, 99, 255, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- App Header -->
+        <header class="app-header">
+            <div class="logo">Hari Priya</div>
+            <nav class="nav-tabs">
+                <button class="nav-tab active" data-tab="home">Home</button>
+                <button class="nav-tab" data-tab="projects">Projects</button>
+                <button class="nav-tab" data-tab="skills">Skills</button>
+                <button class="nav-tab" data-tab="education">Education</button>
+                <button class="nav-tab" data-tab="certifications">Certifications</button>
+                <button class="nav-tab" data-tab="services">Services</button>
+            </nav>
+        </header>
+
+        <!-- App Content -->
+        <main class="app-content">
+            <!-- Home Tab -->
+            <section id="home" class="tab-content active">
+                <div class="hero-section">
+                    <div class="hero-content">
+                        <h1>Hari Priya B</h1>
+                        <div class="title">Computer Science Engineer | Full Stack Developer</div>
+                        <p>A motivated and detail-oriented computer science engineer with a strong interest in software development and programming languages. With a solid foundation in Python, Java, C programming, data analysis automation, and full stack development, I am eager to explore my skills and learn new technologies to make meaningful contributions in a dynamic work environment.</p>
+                        
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                <span>+91 8667656050</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <span>haripriyabaskar22@gmail.com</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Mayiladuthurai, India</span>
+                            </div>
+                        </div>
+
+                        <a href="#projects" class="btn" style="margin-top: 2rem;">View My Projects</a>
+                    </div>
+                    
+                    <div class="hero-image">
+                        <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Developer workspace" class="profile-image">
+                    </div>
+                </div>
+
+                <!-- Quick Stats -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 3rem;">
+                    <div class="card">
+                        <h3>Projects Completed</h3>
+                        <div style="font-size: 2.5rem; font-weight: 700; color: var(--primary);">6+</div>
+                    </div>
+                    <div class="card">
+                        <h3>Technologies</h3>
+                        <div style="font-size: 2.5rem; font-weight: 700; color: var(--primary);">12+</div>
+                    </div>
+                    <div class="card">
+                        <h3>Certifications</h3>
+                        <div style="font-size: 2.5rem; font-weight: 700; color: var(--primary);">5+</div>
+                    </div>
+                    <div class="card">
+                        <h3>Experience</h3>
+                        <div style="font-size: 2.5rem; font-weight: 700; color: var(--primary);">2+ Years</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projects Tab -->
+            <section id="projects" class="tab-content">
+                <h2 style="font-size: 2rem; margin-bottom: 2rem; color: var(--light);">My Projects</h2>
+                <div class="projects-grid">
+                    
+                    <!-- To-Do List App -->
+                    <div class="project-card">
+                            <img src="Screenshot (6).png" alt="To-Do List App" class="project-image">
+                                     <div class="project-info">
+                            <div class="project-title">My To-Do List Application</div>
+                            <div class="project-meta">
+                                <span>Frontend Project</sp an>
+                                <span class="project-tag">JavaScript</span>
+                            </div>
+                            <p>An intuitive task management application with features for adding, completing, and deleting tasks. Built with modern JavaScript and localStorage.</p>
+                            <div style="margin-top: 1rem;">
+                                <span style="font-size: 0.9rem; color: var(--gray);">Features: </span>
+                                <span style="font-size: 0.9rem;">Task categorization, Local storage, Responsive design</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Meeting Transcription Tool -->
+                    <div class="project-card">
+                        <img src="Screenshot (7).png" alt="Meeting Transcription" class="project-image">
+                        <div class="project-info">
+                            <div class="project-title">Meeting Transcription Tool</div>
+                            <div class="project-meta">
+                                <span>2024</span>
+                                <span class="project-tag">Speech Recognition</span>
+                            </div>
+                            <p>Real-time meeting transcription application using Web Speech API with speaker identification and recording controls.</p>
+                            <div style="margin-top: 1rem;">
+                                <span style="font-size: 0.9rem; color: var(--gray);">Tech: </span>
+                                <span style="font-size: 0.9rem;">Web Speech API, JavaScript, HTML5 Audio</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Smart Agriculture -->
+                    <div class="project-card">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnk3NAJnWP3gUMPX71GUeASchrGw387VsQcw&s" alt="Smart Agriculture" class="project-image">
+                        <div class="project-info">
+                            <div class="project-title">Smart Agriculture Monitoring System</div>
+                            <div class="project-meta">
+                                <span>05/2023 - 05/2025</span>
+                                <span class="project-tag">IoT Project</span>
+                            </div>
+                            <p>IoT-based smart agriculture system using sensors to monitor environmental conditions and farm equipment.</p>
+                            <div style="margin-top: 1rem;">
+                                <span style="font-size: 0.9rem; color: var(--gray);">Components: </span>
+                                <span style="font-size: 0.9rem;">Sensors, Cloud integration, Mobile App</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Smart Vehicle -->
+                    <div class="project-card">
+                        <img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Smart Vehicle" class="project-image">
+                        <div class="project-info">
+                            <div class="project-title">Smart Vehicle with Tech App</div>
+                            <div class="project-meta">
+                                <span>10/2025 - 11/2025</span>
+                                <span class="project-tag">Machine Learning</span>
+                            </div>
+                            <p>Smart vehicle integrated with mobile application using ML model to predict vehicle features and performance.</p>
+                            <div style="margin-top: 1rem;">
+                                <span style="font-size: 0.9rem; color: var(--gray);">ML Model: </span>
+                                <span style="font-size: 0.9rem;">Feature prediction, Real-time analytics</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Birthday Bot -->
+                    <div class="project-card">
+                        <img src="https://images.unsplash.com/photo-1512486130939-2c4f79935e4f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Automation" class="project-image">
+                        <div class="project-info">
+                            <div class="project-title">Birthday Bot - UiPath</div>
+                            <div class="project-meta">
+                                <span>05/2023 - 09/2023</span>
+                                <span class="project-tag">RPA Automation</span>
+                            </div>
+                            <p>UiPath-based automation system for sending birthday email invitations with improved efficiency and accuracy.</p>
+                            <div style="margin-top: 1rem;">
+                                <span style="font-size: 0.9rem; color: var(--gray);">Automation: </span>
+                                <span style="font-size: 0.9rem;">Email scheduling, Template management</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Education Organizations -->
+                    <div class="project-card">
+                        <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Education System" class="project-image">
+                        <div class="project-info">
+                            <div class="project-title">Education Organizations System</div>
+                            <div class="project-meta">
+                                <span>10/2025 - 10/2025</span>
+                                <span class="project-tag">ServiceNow</span>
+                            </div>
+                            <p>ServiceNow implementation for education organizations to streamline operations with student and IT service management solutions.</p>
+                            <div style="margin-top: 1rem;">
+                                <span style="font-size: 0.9rem; color: var(--gray);">Platform: </span>
+                                <span style="font-size: 0.9rem;">ServiceNow, ITSM, Student Portal</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Skills Tab -->
+            <section id="skills" class="tab-content">
+                <h2 style="font-size: 2rem; margin-bottom: 2rem; color: var(--light);">Technical Skills</h2>
+                <div class="skills-grid">
+                    
+                    <div class="skill-category">
+                        <h4>Programming Languages</h4>
+                        <ul class="skill-list">
+                            <li class="skill-item">
+                                <i class="fab fa-python"></i>
+                                <span>Python</span>
+                            </li>
+                            <li class="skill-item">
+                                <i class="fab fa-java"></i>
+                                <span>Java</span>
+                            </li>
+                            <li class="skill-item">
+                                <i class="fas fa-code"></i>
+                                <span>C Programming</span>
+                            </li>
+                            <li class="skill-item">
+                                <i class="fab fa-js"></i>
+                                <span>JavaScript</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-category">
+                        <h4>Frontend Development</h4>
+                        <ul class="skill-list">
+                            <li class="skill-item">
+                                <i class="fab fa-html5"></i>
+                                <span>HTML5</span>
+                            </li>
+                            <li class="skill-item">
+                                <i class="fab fa-css3-alt"></i>
+                                <span>CSS3</span>
+                            </li>
+                            <li class="skill-item">
+                                <i class="fab fa-react"></i>
+                                <span>React.js</span>
+                            </li>
+                            <li class="skill-item">
+                                <i class="fas fa-paint-brush"></i>
+                                <span>UI/UX Design (Figma)</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-category">
+                        <h4>Backend & Database</h4>
+                        <ul class="skill-list">
+                            <li class="skill-item">
+                                <i class="fab fa-node-js"></i>
+                                <span>Node.js</span>
+                            </li>
+                            <li class="skill-item">
+                                <i class="fas fa-database"></i>
+                                <span>MongoDB</span>
+                            </li>
+                            <li class="skill-item">
+                                <i class="fas fa-server"></i>
+                                <span>Express.js</span>
+                            </li>
+                            <li class="skill-item">
+                                <i class="fas fa-cloud"></i>
+                                <span>RESTful APIs</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-category">
+                        <h4>Tools & Technologies</h4>
+                        <ul class="skill-list">
+                            <li class="skill-item">
+                                <i class="fas fa-robot"></i>
+                                <span>Selenium Testing</span>
+                            </li>
+                            <li class="skill-item">
+                                <i class="fas fa-chart-line"></i>
+                                <span>Data Analysis</span>
+                            </li>
+                            <li class="skill-item">
+                                <i class="fas fa-project-diagram"></i>
+                                <span>Agile Methodology</span>
+                            </li>
+                            <li class="skill-item">
+                                <i class="fas fa-microchip"></i>
+                                <span>IoT Development</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Additional Skills -->
+                <div class="card" style="margin-top: 2rem;">
+                    <h3>Additional Expertise</h3>
+                    <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1rem;">
+                        <span style="background: rgba(108, 99, 255, 0.2); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem;">Data Structures & Algorithms</span>
+                        <span style="background: rgba(108, 99, 255, 0.2); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem;">Full Stack Development</span>
+                        <span style="background: rgba(108, 99, 255, 0.2); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem;">Responsive Web Design</span>
+                        <span style="background: rgba(108, 99, 255, 0.2); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem;">Machine Learning Basics</span>
+                        <span style="background: rgba(108, 99, 255, 0.2); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem;">Automation Testing</span>
+                        <span style="background: rgba(108, 99, 255, 0.2); padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem;">Cloud Computing</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Education Tab -->
+            <section id="education" class="tab-content">
+                <h2 style="font-size: 2rem; margin-bottom: 2rem; color: var(--light);">Education</h2>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">2022 - 2026</div>
+                    <div class="timeline-content">
+                        <div class="education-title">Bachelor of Engineering in Computer Science</div>
+                        <div class="education-details">AV.C College of Engineering, Mayiladuthurai</div>
+                        <div style="color: var(--success); font-weight: 600; margin-top: 0.5rem;">CGPA: 8.2</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2020 - 2022</div>
+                    <div class="timeline-content">
+                        <div class="education-title">Higher Secondary (HSSC)</div>
+                        <div class="education-details">Raj Matriculation Higher Secondary School, Mayiladuthurai</div>
+                        <div style="color: var(--success); font-weight: 600; margin-top: 0.5rem;">Score: 87%</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2019 - 2020</div>
+                    <div class="timeline-content">
+                        <div class="education-title">Secondary School (SSLC)</div>
+                        <div class="education-details">Raj Matriculation Higher Secondary School, Mayiladuthurai</div>
+                        <div style="color: var(--success); font-weight: 600; margin-top: 0.5rem;">Score: 85%</div>
+                    </div>
+                </div>
+
+                <!-- Experience -->
+                <h2 style="font-size: 2rem; margin: 3rem 0 2rem 0; color: var(--light);">Experience</h2>
+                <div class="card">
+                    <h3>Full Stack Python Developer Intern</h3>
+                    <div style="color: var(--accent); margin-bottom: 1rem;">Femtosoft Technologies | June 2025 - July 2025</div>
+                    <p>Completed a one-month internship focusing on full-stack development with Python, working on real-world projects and gaining practical experience in software development lifecycle.</p>
+                </div>
+
+                <!-- Workshops -->
+                <h2 style="font-size: 2rem; margin: 3rem 0 2rem 0; color: var(--light);">Workshops Attended</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                    <div class="cert-item">
+                        <div class="cert-title">ICTACT Infosys Upskill Training</div>
+                    </div>
+                    <div class="cert-item">
+                        <div class="cert-title">Power BI Workshop</div>
+                    </div>
+                    <div class="cert-item">
+                        <div class="cert-title">Shell Greenskill Programming</div>
+                        <div class="cert-provider">Conducted by Edunet</div>
+                    </div>
+                    <div class="cert-item">
+                        <div class="cert-title">IBM Cloud Workshop</div>
+                        <div class="cert-provider">Conducted by IBM</div>
+                    </div>
+                    <div class="cert-item">
+                        <div class="cert-title">Cloud Logic Workshop</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Certifications Tab -->
+            <section id="certifications" class="tab-content">
+                <h2 style="font-size: 2rem; margin-bottom: 2rem; color: var(--light);">Certifications</h2>
+                <div class="certifications-grid">
+                    
+                    <div class="cert-item">
+                        <div class="cert-title">Data Analysis Certification</div>
+                        <div class="cert-provider">Novi Tech</div>
+                        <p style="margin-top: 1rem; color: #CCCCCC;">Comprehensive data analysis training covering statistical methods, data visualization, and analytical tools.</p>
+                    </div>
+
+                    <div class="cert-item">
+                        <div class="cert-title">C Programming Certification</div>
+                        <div class="cert-provider">Green Apple</div>
+                        <p style="margin-top: 1rem; color: #CCCCCC;">Advanced C programming concepts including data structures, algorithms, and system programming.</p>
+                    </div>
+
+                    <div class="cert-item">
+                        <div class="cert-title">Naan Mudhalvan Hackathon 2025</div>
+                        <div class="cert-provider">GUVI & HCL Technologies</div>
+                        <p style="margin-top: 1rem; color: #CCCCCC;">Finalist in the national level hackathon demonstrating problem-solving skills and technical expertise.</p>
+                    </div>
+
+                    <div class="cert-item">
+                        <div class="cert-title">Full Stack Development</div>
+                        <div class="cert-provider">Self-paced Learning</div>
+                        <p style="margin-top: 1rem; color: #CCCCCC;">Comprehensive full-stack development skills including frontend, backend, and database management.</p>
+                    </div>
+
+                    <div class="cert-item">
+                        <div class="cert-title">Agile Methodology</div>
+                        <div class="cert-provider">Professional Training</div>
+                        <p style="margin-top: 1rem; color: #CCCCCC;">Training in Agile development practices, Scrum framework, and project management methodologies.</p>
+                    </div>
+                </div>
+
+                <!-- Languages -->
+                <h2 style="font-size: 2rem; margin: 3rem 0 2rem 0; color: var(--light);">Languages</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;">
+                    <div class="card">
+                        <h3>English</h3>
+                        <div style="color: var(--success);">Proficient</div>
+                    </div>
+                    <div class="card">
+                        <h3>Telugu</h3>
+                        <div style="color: var(--success);">Advanced</div>
+                    </div>
+                    <div class="card">
+                        <h3>Tamil</h3>
+                        <div style="color: var(--success);">Native</div>
+                    </div>
+                    <div class="card">
+                        <h3>Hindi</h3>
+                        <div style="color: var(--success);">Advanced</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Services Tab -->
+            <section id="services" class="tab-content">
+                <h2 style="font-size: 2rem; margin-bottom: 2rem; color: var(--light);">Services</h2>
+                <div class="services-grid">
+                    
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h4>Web Development</h4>
+                        <p>Custom website development using modern technologies and responsive design principles.</p>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h4>Mobile Applications</h4>
+                        <p>Cross-platform mobile app development with focus on user experience and performance.</p>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h4>Data Analysis</h4>
+                        <p>Data processing, analysis, and visualization to derive meaningful business insights.</p>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h4>Automation Solutions</h4>
+                        <p>RPA and workflow automation to improve efficiency and reduce manual tasks.</p>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-cloud"></i>
+                        </div>
+                        <h4>Cloud Solutions</h4>
+                        <p>Cloud infrastructure setup, migration, and management for scalable applications.</p>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-paint-brush"></i>
+                        </div>
+                        <h4>UI/UX Design</h4>
+                        <p>User interface and experience design for web and mobile applications.</p>
+                    </div>
+                </div>
+
+                <!-- Hobbies -->
+                <h2 style="font-size: 2rem; margin: 3rem 0 2rem 0; color: var(--light);">Hobbies & Interests</h2>
+                <div style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center;">
+                    <div style="background: rgba(108, 99, 255, 0.2); padding: 1rem 1.5rem; border-radius: 25px; text-align: center; min-width: 150px;">
+                        <i class="fas fa-music" style="font-size: 1.5rem; color: var(--primary); margin-bottom: 0.5rem;"></i>
+                        <div>Listening to Music</div>
+                    </div>
+                    <div style="background: rgba(108, 99, 255, 0.2); padding: 1rem 1.5rem; border-radius: 25px; text-align: center; min-width: 150px;">
+                        <i class="fas fa-dance" style="font-size: 1.5rem; color: var(--primary); margin-bottom: 0.5rem;"></i>
+                        <div>Dance</div>
+                    </div>
+                    <div style="background: rgba(108, 99, 255, 0.2); padding: 1rem 1.5rem; border-radius: 25px; text-align: center; min-width: 150px;">
+                        <i class="fas fa-utensils" style="font-size: 1.5rem; color: var(--primary); margin-bottom: 0.5rem;"></i>
+                        <div>Cooking</div>
+                    </div>
+                    <div style="background: rgba(108, 99, 255, 0.2); padding: 1rem 1.5rem; border-radius: 25px; text-align: center; min-width: 150px;">
+                        <i class="fas fa-film" style="font-size: 1.5rem; color: var(--primary); margin-bottom: 0.5rem;"></i>
+                        <div>Watching Movies</div>
+                    </div>
+                    <div style="background: rgba(108, 99, 255, 0.2); padding: 1rem 1.5rem; border-radius: 25px; text-align: center; min-width: 150px;">
+                        <i class="fas fa-plane" style="font-size: 1.5rem; color: var(--primary); margin-bottom: 0.5rem;"></i>
+                        <div>Travelling</div>
+                    </div>
+                    <div style="background: rgba(108, 99, 255, 0.2); padding: 1rem 1.5rem; border-radius: 25px; text-align: center; min-width: 150px;">
+                        <i class="fas fa-seedling" style="font-size: 1.5rem; color: var(--primary); margin-bottom: 0.5rem;"></i>
+                        <div>Exercise & Gardening</div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- App Footer -->
+        <footer class="app-footer">
+            <div style="font-size: 1.2rem; margin-bottom: 1rem;">Let's Work Together!</div>
+            <p style="color: var(--gray); margin-bottom: 1.5rem;">I'm always open to discussing new opportunities and interesting projects.</p>
+            
+            <div style="margin-bottom: 1.5rem;">
+                <a href="mailto:haripriyabaskar22@gmail.com" class="btn">Contact Me</a>
+            </div>
+
+            <div class="social-links">
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="mailto:haripriyabaskar22@gmail.com"><i class="fas fa-envelope"></i></a>
+            </div>
+
+            <div style="margin-top: 2rem; color: var(--gray); font-size: 0.9rem;">
+                &copy; <span id="currentYear"></span> Hari Priya B. All Rights Reserved.
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Tab Navigation
+        const tabs = document.querySelectorAll('.nav-tab');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs and contents
+                tabs.forEach(t => t.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+                
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                
+                // Show corresponding content
+                const tabId = tab.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if(this.getAttribute('href') === '#') return;
+                
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetTab = document.querySelector(`[data-tab="${targetId}"]`);
+                
+                if(targetTab) {
+                    // Switch to target tab
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    
+                    targetTab.classList.add('active');
+                    document.getElementById(targetId).classList.add('active');
+                    
+                    // Scroll to top of content
+                    document.querySelector('.app-content').scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Add animation to cards on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards
+        document.querySelectorAll('.card, .project-card, .service-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
